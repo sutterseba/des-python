@@ -2,7 +2,6 @@
 # @sutterseba
 # Educational purpose only
 import numpy as np
-from math import ceil
 
 
 IP_TABLE = np.array([
@@ -136,7 +135,7 @@ def derive_keys (initial_key):
     """Schedules 16 round keys (48 bit) from initial key (64 bit)"""
 
     if initial_key.size != 64:
-        raise ValueError(f"Invalid initial key size")
+        raise ValueError("Invalid initial key size")
     
     # Ignore parity bits (PC-1)
     initial_key = permutate(initial_key, PC1_TABLE)
@@ -147,6 +146,7 @@ def derive_keys (initial_key):
 
     for i in range(16):
 
+        # Just one left shift if in round 1, 2, 9 or 16
         n = 1 if i in [0, 1, 8, 15] else 2
 
         C = np.roll(C, -n)
