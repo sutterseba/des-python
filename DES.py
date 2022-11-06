@@ -297,6 +297,7 @@ def decrypt_file (path, k):
         file[i] = decrypt(file[i], k)
 
     file = np.concatenate(file)
+    file = np.trim_zeros(file, 'b') # Remove padded zeros
 
     np.packbits(file).tofile(path)
     return file
