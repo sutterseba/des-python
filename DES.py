@@ -124,7 +124,7 @@ S_BOX[7] = np.array([
 
 
 def new_key (custom_seed = None):
-
+    """returns a random key"""
     if custom_seed:
         np.random.seed(custom_seed)
 
